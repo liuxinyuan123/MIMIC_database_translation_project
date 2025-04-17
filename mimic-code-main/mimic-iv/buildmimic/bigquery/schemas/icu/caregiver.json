@@ -1,7 +1,0 @@
-[
-    {
-        "name": "caregiver_id",
-        "type": "INT64",
-        "mode": "REQUIRED"
-    }
-]

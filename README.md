@@ -3,24 +3,15 @@
 ## 项目介绍
 这是助力临床研究的一项 **mimic-iv数据库** 说明文档的汉化工程。
 
-当你看到这篇文档时，我们默认你懂得如何申请和使用mimic数据库，并且已经在正规渠道获得mimic数据库使用权限，并获得CIIT官方认证。
+**请注意：** 当你看到这篇文档时，我们默认你懂得如何申请和使用mimic数据库，并且已经在正规渠道获得mimic数据库使用权限，并获得CIIT官方认证。如果不知如何申请，可通过本文件下方的官网进行检索，如有问题可联系我们。
 
-本项目不会为你解决任何关于官方认证、伦理认证的问题，包括官网题目的答案我们将不会提供。
+**本项目不会为你解决任何关于官方认证、伦理认证的问题，包括官网题目的答案我们将不会提供。**
 
 ### 项目背景
 MIMIC-IV数据库是一家医院数据库，由MIT-LCP（MIT Center for Clinical 
-Trials）开发，目前很多科研项目都用到了mimic数据库，但由于英文原版的说明文档阅读起来极不友好，因此，我们决定将mimic
-数据库的英文版说明文档进行汉化。
+Trials）开发，目前很多科研项目都用到了mimic数据库，但由于英文原版的说明文档阅读起来极不友好，因此，我们决定将mimic数据库的英文版说明文档进行汉化。
 
 我们提供了3种说明文档，分别对应2种语言。并提供在mimic-iv数据库里面物化视图derived_concept各个表中添加`hadm_id`字段，方便后续的查询。
-
-> 因为每一个`subject_id`为个体的唯一编号，每一个subject_id对应一个`subject_id`，而每一个`hadm_id` 为住院的唯一编号，每一个hadm_id对应一个住院人次，因官方原版安装时物化视图里面的一些`hadm_id`不显示，因此为后续研究中提取 
-> 
-> 人->住院当次-> ICU当次
-> 
-> 逻辑做基础。
-
-
 
 ## 参与人员
 * 刘鑫源，青岛大学医学部，山东省青岛市，医学硕士，已毕业。
@@ -54,40 +45,13 @@ Trials）开发，目前很多科研项目都用到了mimic数据库，但由于
 ## 软件准备
 postgresql数据库16.0版本及以上。
 
+[postgresql官网下载](https://www.postgresql.org/download/)
+
+https://www.postgresql.org/download/
+
 ## 运行环境
 windows 10, 64位。
 windows 11, 64位。
-
-## 源代码修改记录
-[mimic-iv数据库本地安装文件](https://github.com/MIT-LCP/mimic-code/)
-将将物化视图文件[concepts_postgres](mimic-code-main/mimic-iv/concepts_postgres)
-文件夹下的一些源代码进行修改。
-
-修改内容：为每一个病例添加`hadm_id`字段。
-
-
-### 涉及的文件夹有
-[concepts_postgres](mimic-code-main/mimic-iv/concepts_postgres)
-, 
-[comorbidity](mimic-code-main/mimic-iv/concepts_postgres/comorbidity)
-, 
-[demographics](mimic-code-main/mimic-iv/concepts_postgres/demographics)
-,
-[firstday](mimic-code-main/mimic-iv/concepts_postgres/firstday)
-,
-[measurement](mimic-code-main/mimic-iv/concepts_postgres/measurement)
-,
-[medication](mimic-code-main/mimic-iv/concepts_postgres/medication)
-,
-[organfailure](mimic-code-main/mimic-iv/concepts_postgres/organfailure)
-,
-[score](mimic-code-main/mimic-iv/concepts_postgres/score)
-,
-[sepsis](mimic-code-main/mimic-iv/concepts_postgres/sepsis)
-,
-[treatment](mimic-code-main/mimic-iv/concepts_postgres/treatment)
-
-
 
 ## 安装教程
 
@@ -109,7 +73,7 @@ https://physionet.org/content/mimiciv/view-required-training/3.1/#1
 伦理、数据使用的审批网站：
 https://about.citiprogram.org/
 
-如需要安装数据库的协作，可以通过本文件的下面联系方式与本团队获得联系。
+如需要安装数据库的协作，可以通过本文件下面的联系方式与本团队获得联系。
 
 ### 软件架构及软件准备
 使用postgresql 17数据库管理，使用pgadmin进行数据库查询。
@@ -125,9 +89,9 @@ https://about.citiprogram.org/
 无经济与利益冲突。
 
 ### 通信方式
-如需协助mimic数据库的安装、数据提取的sql语句，可联系以下方式。
+如需协助mimic数据库的安装（windows系统）、数据提取的sql语句，可联系以下邮件。
 
-邮箱：1980304080@qq.com
+邮箱：17386506353@189.cn
 
 
 ### 赞助

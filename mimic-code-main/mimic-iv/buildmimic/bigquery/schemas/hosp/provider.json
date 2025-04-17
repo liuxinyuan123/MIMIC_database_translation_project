@@ -1,7 +1,0 @@
-[
-    {
-        "name": "provider_id",
-        "type": "STRING",
-        "mode": "REQUIRED"
-    }
-]
