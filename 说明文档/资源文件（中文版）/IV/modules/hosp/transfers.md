@@ -11,7 +11,7 @@ description: >
 
 患者在住院期间的物理位置。
 
-### Links to
+### 表连接
 
 * *patients* on `subject_id`
 * *admissions* on `hadm_id`
