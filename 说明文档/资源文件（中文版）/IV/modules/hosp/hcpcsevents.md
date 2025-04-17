@@ -1,16 +1,9 @@
----
-title: "hpcsevents"
-linktitle: "hcpcsevents"
-weight: 1
-date: 2020-08-10
-description: >
-  Billed events occurring during the hospitalization. Includes CPT codes.
----
+住院期间发生的计费事件。包括 CPT 代码。
+
 
 ## *hcpcsevents*
 
-## Links to
-
+## 表连接
 * *d_hcpcs* on hcpcs_cd
 
 <!--
@@ -19,7 +12,7 @@ description: >
 
 -->
 
-## Table columns
+## 表列描述
 
 | Name                | Postgres data type |
 |---------------------|--------------------|
@@ -31,26 +24,17 @@ description: >
 | `short_description` | VARCHAR(180)       |
 
 ### `subject_id`
-
-{{% include "/static/include/subject_id.md" %}}
-
 ### `hadm_id`
-
-{{% include "/static/include/hadm_id.md" %}}
-
 ### `chartdate`
-
-The date associated with the coded event.
+  与编码事件相关的日期。
 
 ### `hcpcs_cd`
+  一个五字符代码，唯一代表该事件。
 
-A five character code which uniquely represents the event.
-Link this to `code` in *d_hcpcs* for a longer description of the code.
+  将此链接到 *d_hcpcs* 中的 `code` 以获取代码的更长描述。
 
 ### `seq_num`
-
-An assigned order to HCPCS codes for an individual hospitalization. This order sometimes conveys meaning, e.g. sometimes higher priority, but this is not guaranteed across all codes.
+  为个别住院分配的 HCPCS 代码顺序。此顺序有时传达含义，例如有时表示更高的优先级，但这并不能保证适用于所有代码。
 
 ### `short_description`
-
-A short textual descriptions of the `hcpcs_cd` listed for the given row.
+  对给定行中列出的 `hcpcs_cd` 的简短文本描述。
