@@ -1,0 +1,11 @@
+name: "Download MIMIC-IV and MIMIC-IV-ED Demo"
+description: "Downloads MIMIC-IV and MIMIC-IV-ED demo data from PhysioNet"
+runs:
+  using: "composite"
+  steps:
+    - name: Download demo data from PhysioNet
+      run: |
+        echo "Downloading MIMIC-IV and MIMIC-IV-ED demo from PhysioNet."
+        wget -r -N -c --reject "index.html*" -nH -np --cut-dirs=3 https://physionet.org/files/mimic-iv-demo/2.2/
+        wget -r -N -c --reject "index.html*" -nH -np --cut-dirs=3 https://physionet.org/files/mimic-iv-ed-demo/2.2/
+      shell: bash
