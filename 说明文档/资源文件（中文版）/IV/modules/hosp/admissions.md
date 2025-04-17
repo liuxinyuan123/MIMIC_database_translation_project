@@ -1,13 +1,3 @@
----
-title: "admissions table"
-linktitle: "admissions"
-date: 2020-08-10
-weight: 1
-description: >
-  Detailed information about hospital stays.
----
-
-The *admissions* table gives information regarding a patient's admission to the hospital. Since each unique hospital visit for a patient is assigned a unique `hadm_id`, the *admissions* table can be considered as a definition table for `hadm_id`. Information available includes timing information for admission and discharge, demographic information, the source of the admission, and so on.
 
 *admissions* 表提供有关患者入院的信息。由于患者的每次唯一医院就诊都分配有一个唯一的`hadm_id`，因此 *入院* 表可以被视为 `hadm_id` 的定义表。可用信息包括入院和出院的时间信息、人口统计信息、入院来源等。
 
@@ -17,14 +7,11 @@ The *admissions* table gives information regarding a patient's admission to the 
 
 ## 重要注意事项
 
-* The data is sourced from the admission, discharge and transfer database from the hospital (often referred to as 'ADT' data).
-* Organ donor accounts are sometimes created for patients who died in the hospital. These are distinct hospital admissions with very short, sometimes negative lengths of stay. Furthermore, their `deathtime` is frequently the same as the earlier patient admission's `deathtime`.
 
-
-* 数据来源于医院的入院、出院和转院数据库（通常称为“ADT”数据）。
+* 数据来源于医院的入院、出院和转院（admission, discharge and transfer ）数据库（通常称为“ADT”数据）。
 * 器官捐献者账户有时会为在医院死亡的患者创建。这些是不同的住院患者，住院时间非常短，有时是负数。此外，他们的“死亡时间`deathtime`”通常与早期患者入院的“死亡时间`deathtime`”相同。
 
-## Table columns
+## 表列
 
 | Name                   | Postgres data type   |
 |------------------------|----------------------|
@@ -68,28 +55,34 @@ The *admissions* table gives information regarding a patient's admission to the 
 
 ## 详细描述
 
-The *admissions* table defines all hospitalizations in the database. Hospitalizations are assigned a unique random integer known as the `hadm_id`.
 
 *admissions* 表定义了数据库中的所有住院情况。住院人数被分配一个唯一的随机整数，称为`hadm_id`。
 
 ### `subject_id`, `hadm_id`
 
-Each row of this table contains a unique `hadm_id`, which represents a single patient's admission to the hospital. `hadm_id` ranges from 2000000 - 2999999. It is possible for this table to have duplicate `subject_id`, indicating that a single patient had multiple admissions to the hospital. The ADMISSIONS table can be linked to the PATIENTS table using `subject_id`.
 
 此表的每一行都包含一个唯一的 '`hadm_id`'，它表示单个患者的入院情况。'`hadm_id`' 的范围是 2000000 - 2999999。此表可能包含重复的 '`subject_id`'，表示单个患者多次入院。可以使用 '`subject_id`' 将 ADMISSIONS 表链接到 PATIENTS 表。
 
 ### `admittime`, `dischtime`, `deathtime`
-
-`admittime` provides the date and time the patient was admitted to the hospital, while `dischtime` provides the date and time the patient was discharged from the hospital. If applicable, `deathtime` provides the time of in-hospital death for the patient. Note that `deathtime` is only present if the patient died in-hospital, and is almost always the same as the patient's `dischtime`. However, there can be some discrepancies due to typographical errors.
 
 `admitTime`提供患者入院的日期和时间，而`dischTime`提供患者出院的日期和时间。如果适用，`deathtime
 `提供患者在医院内死亡的时间。请注意，`deathtime`仅在患者在医院内死亡时出现，并且几乎总是与患者的`dischtime`相同。但是，由于拼写错误，可能会有一些差异。
 
 ### `admission_type`
 
-`admission_type` is useful for classifying the urgency of the admission. There are 9 possibilities: 'AMBULATORY OBSERVATION', 'DIRECT EMER.', 'DIRECT OBSERVATION', 'ELECTIVE', 'EU OBSERVATION', 'EW EMER.', 'OBSERVATION ADMIT', 'SURGICAL SAME DAY ADMISSION', 'URGENT'.
 
-`admission_type`可用于对 ADMISSION 的紧急性进行分类。有 9 种可能性： 'AMBULATORY OBSERVATION', 'DIRECT EMER.', 'DIRECT OBSERVATION', 'ELECTIVE', 'EU OBSERVATION', 'EW EMER.', 'OBSERVATION ADMIT', 'SURGICAL SAME DAY ADMISSION', 'URGENT'.
+`admission_type`可用于对 ADMISSION 的紧急性进行分类。
+
+有 9 种可能性： 
+1. 'AMBULATORY OBSERVATION',
+2. 'DIRECT EMER.',
+3. 'DIRECT OBSERVATION',
+4. 'ELECTIVE', '
+5. EU OBSERVATION',
+6. 'EW EMER.',
+7. 'OBSERVATION ADMIT',
+8. 'SURGICAL SAME DAY ADMISSION',
+9. 'URGENT'.
 
 ### `admit_provider_id`
 
@@ -99,20 +92,20 @@ Each row of this table contains a unique `hadm_id`, which represents a single pa
 
 ### `admission_location`, `discharge_location`
 
-`admission_location` provides information about the location of the patient prior to arriving at the hospital. Note that as the emergency room is technically a clinic, patients who are admitted via the emergency room usually have it as their admission location.
 
-Similarly, `discharge_location` is the disposition of the patient after they are discharged from the hospital.
+“`admission_location`”提供有关患者到达医院之前的位置信息。请注意，由于急诊室在技术上是一个诊所，因此通过急诊室入院的患者通常将其作为入院地点。
 
-#### Association with UB-04 billing codes
+同样，“`discharge_location`”是患者出院后的处置。
 
-`admission_location` and `discharge_location` are associated with internal hospital `ibax` codes which aren't provided in MIMIC-IV. These internal codes tend to align with UB-04 billing codes. 
+#### 结合UB-04 账单代码
 
-In some cases more than one internal code is associated with a given `admission_location` and `discharge_location`. This can either be do to; 1) multiple codes being used by the hospital for the same `admission_location` or `discharge_location`, or 2) during de-identification multiple internal codes may be combined into a single `admission_location` or `discharge_location`. 
+“admission_location”和“discharge_location”与医院内部的“ibax”代码相关联，这些代码在 MIMIC-IV 中没有提供。这些内部代码往往与 UB-04 账单代码一致。
 
-In the tables below, we provide the matching UB-04 code(s) for the most common `ibax` codes for a given `admission_location` and `discharge_location`, when applicable. In cases where more than one code is given, if this combination is due to 1) in the above paragraph, the additional code must have at least 10% of the entires of the most common code. 
+在某些情况下，多个内部代码与给定的 '`admission_location`' 和 '`discharge_location`' 相关联。这可以是做的;1） 医院对同一“`admission_location`”或“`discharge_location`”使用多个代码，或 2） 在去标识化过程中，多个内部代码可能合并为一个“`admission_location`”或“`discharge_location`”。
 
+在下表中，我们为给定的“`admission_location`”和“`discharge_location`”提供了最常见的“ibax”代码的匹配 UB-04 代码（如果适用）。在给出多个代码的情况下，如果此组合是由于上一段中的 1） 造成的，则附加代码必须至少包含最常见代码全部的 10%。
 
-**Admission UB-04 mappings:**
+**Admission UB-04 对应表:**
 
 | admission_location                     | UB-04 code(s) |
 |----------------------------------------|---------------|
@@ -128,8 +121,22 @@ In the tables below, we provide the matching UB-04 code(s) for the most common `
 | EMERGENCY ROOM                         | 1, 2, 7       |
 | INTERNAL TRANSFER TO OR FROM PSYCH     | none          |
 
+| admission_location |UB-04 代码 |
+|--------------------|---------------|
+| 医生推荐               |1、3 |
+| 现场/自助推荐            |1 |
+| 门诊手术转移             |1、2、6 |
+| 信息不可用              |1、9 |
+| 诊所                 |2、8 |
+| 手术现场               |2 |
+| PACU               |2 |
+| 从医院转院              |4、6 |
+| 从专业护理机构转入          |5 |
+| 急诊室                |1、2、7 |
+| 与 PSYCH 之间的内部转移    |none |
 
-**Discharge UB-04 mappings:**
+
+**Discharge UB-04 对应表:**
 
 | discharge_location           | UB-04 code(s) |
 |------------------------------|---------------|
@@ -148,27 +155,39 @@ In the tables below, we provide the matching UB-04 code(s) for the most common `
 | PSYCH FACILITY               | 65            |
 | OTHER FACILITY               | 70            |
 
-UB-04 documentation online often provides more detail than found in the `admission_location` and `discharge_location` text, particularly for discharges.
+| discharge_location |UB-04 代码 |
+|--------------------|---------|
+| 首页                 |01 |
+| 急症医院               |02、81、86 |
+| 专业护理机构             |03、64 |
+| 生命支持               |04 |
+| 医疗保健设施             |05、43 |
+| 家庭保健               |06 |
+| 反对               |07 |
+| 去世                 |20  |
+| 其他设施               |21、70 |
+| 临终关怀               |50、51 |
+| 康复                 |62  |
+| 慢性/长期急性护理          |63  |
+| 心理设施               |65  |
+| 其他设施               |70  |
 
-在线 UB-04 文件通常提供比“`admission_location`”和“`discharge_location`”文本中更多的细节，特别是对于放电。
+
+在线 UB-04 文件通常提供比“`admission_location`”和“`discharge_location`”文本中更多的细节，特别是对于出院患者。
 
 ### `insurance`, `language`, `marital_status`, `ethnicity`
 
-The `insurance`, `language`, `marital_status`, and `ethnicity` columns provide information about patient demographics for the given hospitalization.
-Note that as this data is documented for each hospital admission, they may change from stay to stay.
+
 
 `insurance`、`language`、`marital_status`和`ethnicity`列提供有关给定住院的患者人口统计信息。
+
 请注意，由于每次入院都记录了这些数据，因此他们可能会因住院而异。
 
 ### `edregtime`, `edouttime`
-
-The date and time at which the patient was registered and discharged from the emergency department.
 
 患者登记和从急诊科出院的日期和时间。
 
 
 ### `hospital_expire_flag`
-
-This is a binary flag which indicates whether the patient died within the given hospitalization. `1` indicates death in the hospital, and `0` indicates survival to hospital discharge.
 
 这是一个二进制标志，指示患者是否在给定的住院治疗范围内死亡。“1”表示在医院死亡，“0”表示存活到出院。

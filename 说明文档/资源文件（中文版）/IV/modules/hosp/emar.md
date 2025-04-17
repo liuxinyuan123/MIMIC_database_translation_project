@@ -1,18 +1,13 @@
----
-title: "emar"
-linktitle: "emar"
-weight: 1
-date: 2020-08-10
-description: >
-  The Electronic Medicine Administration Record (eMAR); barcode scanning of medications at the time of administration.
----
+
 
 ## *emar*
 
-The EMAR table is used to record administrations of a given medicine to an individual patient.
-Records in this table are populated by bedside nursing staff scanning barcodes associated with the medicine and the patient.
 
-## Links to
+EMAR 表用于记录对单个患者进行的特定药物的给药。
+
+该表中的记录由床边护理人员扫描与药物和患者相关的条形码填充。
+
+## 表连接
 
 * *emar_detail* on `emar_id`
 * *pharmacy* on `pharmacy_id`
@@ -21,10 +16,9 @@ Records in this table are populated by bedside nursing staff scanning barcodes a
 
 
 ## Important considerations
+* eMAR 系统在 2011-2013 年期间实施。因此，并非所有患者都有 eMAR 数据。
 
-* The eMAR system was implemented during 2011-2013. As a result, eMAR data is not available for all patients.
-
-## Table columns
+## 表列
 
 | Name                | Postgres data type   |
 |---------------------|----------------------|
@@ -43,45 +37,39 @@ Records in this table are populated by bedside nursing staff scanning barcodes a
 
 ### `subject_id`
 
-{{% include "/static/include/subject_id.md" %}}
-
 ### `hadm_id`
-
-{{% include "/static/include/hadm_id.md" %}}
 
 ### `emar_id`, `emar_seq`
 
-Identifiers for the eMAR table. `emar_id` is a unique identifier for each order made in eMAR. `emar_seq` is a consecutive integer which numbers eMAR orders chronologically. `emar_id` is composed of `subject_id` and `emar_seq` in the following pattern: '`subject_id`-`emar_seq`'.
+eMAR 表的标识符。`emar_id` 是 eMAR 中每个订单的唯一标识符。`emar_seq` 是一个连续的整数，按时间顺序对 eMAR 订单进行编号。`emar_id` 由 `subject_id` 和 `emar_seq` 组成，模式如下：'`subject_id`-`emar_seq`'。
 
 ### `poe_id`
 
-An identifier which links administrations in *emar* to orders in *poe* and *prescriptions*.
+一个标识符，将 *emar* 中的给药与 *poe* 和 *prescriptions* 中的订单链接起来。
 
 ### `pharmacy_id`
 
-An identifier which links administrations in *emar* to pharmacy information in the *pharmacy* table.
+一个标识符，将 *emar* 中的给药与 *pharmacy* 表中的药房信息链接起来。
 
 ### `enter_provider_id`
 
-`enter_provider_id` provides an anonymous identifier for the provider who entered the information into the eMAR system.
-{{% include "/static/include/provider_id.md" %}}
+`enter_provider_id` 为将信息输入 eMAR 系统的提供者提供匿名标识符。
+
 
 ### `charttime`
 
-The time at which the medication was administered.
+药物给药的时间。
 
 ### `medication`
 
-The name of the medication which was administered.
+所给药物的名称。
 
 ### `event_txt`
 
-Information about the administration. Most frequently `event_txt` is 'Administered', but other possible values are 'Applied', 'Confirmed', 'Delayed', 'Not Given', and so on.
+有关给药的信息。最常见的 `event_txt` 是 'Administered'，但其他可能的值包括 'Applied'、'Confirmed'、'Delayed'、'Not Given' 等。
 
 ### `scheduletime`
-
-If present, the time at which the administration was scheduled.
+如果存在，给药计划的时间。
 
 ### `storetime`
-
-The time at which the administration was documented in the eMAR table.
+给药记录在 eMAR 表中的时间。

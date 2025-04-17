@@ -1,14 +1,11 @@
 
 ## *omr*
 
-The Online Medical Record (OMR) table stores miscellaneous information 
-documented in the electronic health record.   
-It is a useful source of outpatient measurements such as blood pressure, weight, height, and body mass index.
+
 
 在线病历 (OMR) 表存储电子健康记录中记录的杂项信息。   
 它是门诊测量的有用来源，例如血压、体重、身高和体重指数。
 
-## Table columns
 ## 表格列
 
 | Name           | Postgres data type    |
@@ -27,31 +24,23 @@ It is a useful source of outpatient measurements such as blood pressure, weight,
 |`result_name` |VARCHAR(100) 非 NULL |
 |`result_value` |文本不为空 |
 
-## Detailed Description
 ## 详细说明
 
 ### `subject_id`
 
-{{% include "/static/include/subject_id.md" %}}
 
 ## `chartdate`
-The date on which the observation was recorded.   
 记录观察结果的日期。
 
 
 ## `seq_num`
 
-An monotonically increasing integer which uniquely distinguishes results of the same type recorded on the same day.   
-
-For example, if two blood pressure measurements occur on the same day, `seq_num` orders them chronologically.
-
 一个单调递增的整数，用于唯一区分同一天记录的相同类型的结果。   
-例如，如果在同一天进行两次血压测量，则 'seq_num' 会按时间顺序排列它们。
+> 例如，如果在同一天进行两次血压测量，则 'seq_num' 会按时间顺序排列它们。
 
 
 ## `result_name`
 
-Each row provides detail regarding a single observation in the EHR.  `result_name` provides a human interpretable description of the observation. As of MIMIC-IV v2.2, the following table lists the number of observations and the most common value.
 
 每行提供有关 EHR 中单个观察的详细信息。`result_name`提供了对观察的人类可解释描述。从 MIMIC-IV v2.2 开始，下表列出了观测值的数量和最常见的值。
 
@@ -91,6 +80,5 @@ Each row provides detail regarding a single observation in the EHR.  `result_nam
 
 ### `result_value`
 
-`result_value` is the value associated with the given OMR observation. For example, for the `result_name` of 'Blood Pressure', the `field_value` column contains the recorded blood pressure (120/80, 130/70, and so on).
 
 `result_value`是与给定 OMR 观察值关联的值。例如，对于 'Blood Pressure' 的 'result_name'，'field_value' 列包含记录的血压(120/80、130/70 等)。
