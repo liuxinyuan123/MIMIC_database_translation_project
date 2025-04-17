@@ -1,27 +1,21 @@
----
-title: "emar_detail"
-linktitle: "emar_detail"
-weight: 1
-date: 2020-08-10
-description: >
-  Supplementary information for electronic administrations recorded in *emar*.
----
-
 ## *emar_detail*
 
-The *emar_detail* table contains information for each medicine administration made in the EMAR table.
-Information includes the associated pharmacy order, the dose due, the dose given, and many other parameters associated with the medical administration.
+*emar_detail* 表包含在 EMAR 表中进行的每次药物给药的信息。
 
-## Links to
+
+信息包括相关的药房订单、应给药剂量、实际给药剂量以及与医疗管理相关的许多其他参数。
+
+## 表连接
 
 * *emar* on `emar_id`
 * *pharmacy* on `pharmacy_id`
 
 ## Important considerations
 
-* The eMAR system was implemented during 2011-2013. As a result, eMAR data is not available for all patients.
 
-## Table columns
+* eMAR 系统在 2011-2013 年期间实施。因此，并非所有患者都有 eMAR 数据。
+
+## 表列
 
 | Name                                   | Postgres data type   |
 |----------------------------------------|----------------------|
@@ -61,29 +55,30 @@ Information includes the associated pharmacy order, the dose due, the dose given
 
 ### `subject_id`
 
-{{% include "/static/include/subject_id.md" %}}
-
 ### `emar_id`, `emar_seq`
 
-Identifiers for the eMAR table. `emar_id` is a unique identifier for each order made in eMAR. `emar_seq` is a consecutive integer which numbers eMAR orders chronologically. `emar_id` is composed of `subject_id` and `emar_seq` in the following pattern: '`subject_id`-`emar_seq`'.
+
+eMAR 表的标识符。`emar_id` 是 eMAR 中每个订单的唯一标识符。`emar_seq` 是一个连续的整数，按时间顺序对 eMAR 订单进行编号。`emar_id` 由 `subject_id` 和 `emar_seq` 组成，模式如下：'`subject_id`-`emar_seq`'。
 
 ### `parent_field_ordinal`
 
-`parent_field_ordinal` delineates multiple administrations for the same eMar event, e.g. multiple formulary doses for the full dose. As eMAR requires the administrating provider to scan a barcode for *each* formulary provided to the patient, it is often the case that multiple rows in *emar_detail* correspond to a single row in *emar* (e.g. multiple pills are administered which add up to the desired dose). The structure for *emar_detail* rows is as follows:
+`parent_field_ordinal` 描述了同一 eMar 事件的多次给药，例如完整剂量的多个配方剂量。由于 eMAR 要求管理提供者为提供给患者的每个配方扫描条形码，因此通常 *emar_detail* 中的多行对应于 *emar* 的单行（例如，多次给药以达到所需剂量）。*emar_detail* 行的结构如下：
 
-* There is one row per eMAR order with a NULL `parent_field_ordinal`: this row usually contains the desired dose for the administration.
-* Afterward, if there are N formulary doses, `parent_field_ordinal` will take values '1.1', '1.2', ..., '1.N'.
 
-The most common case occurs when there is only one formulary dose per medication. In this case the `emar_id` will have two rows in the *emar_detail* table: one with a NULL value for `parent_field_ordinal` (usually providing the dose due), and one row with a value of '1.1' for `parent_field_ordinal` (usually providing the actual dose administered).
+* 每个 eMAR 订单有一行 `parent_field_ordinal` 为 NULL：此行通常包含给药的所需剂量。
+
+
+* 之后，如果有 N 个配方剂量，`parent_field_ordinal` 将取值 '1.1', '1.2', ..., '1.N'。
+
+
+最常见的情况是每种药物只有一个配方剂量。在这种情况下，`emar_id` 将在 *emar_detail* 表中有两行：一行 `parent_field_ordinal` 为 NULL（通常提供应给药剂量），另一行 `parent_field_ordinal` 为 '1.1'（通常提供实际给药剂量）。
 
 ### `administration_type`
 
-The type of administration, including 'IV Bolus', 'IV Infusion', 'Medication Infusion', 'Transdermal Patch', and so on.
+给药类型，包括 'IV Bolus'、'IV Infusion'、'Medication Infusion'、'Transdermal Patch' 等。
 
 ### `pharmacy_id`
+一个标识符，允许将 eMAR 订单与 *pharmacy* 表中提供的药房信息链接起来。注意：在 *emar_detail* 表中，相同的 `emar_id` 可能在不同行中有多个不同的 `pharmacy_id`。
 
-An identifier which allows linking the eMAR order to pharmacy information provided in the *pharmacy* table. Note: rarely the same `emar_id` may have multiple distinct `pharmacy_id` across rows in the *emar_detail* table.
-
-### Remaining columns
-
-The remaining columns provide information about the delivery of the formulary dose of the administered medication.
+### 其余列
+其余列提供有关所给药物的配方剂量交付的信息。
