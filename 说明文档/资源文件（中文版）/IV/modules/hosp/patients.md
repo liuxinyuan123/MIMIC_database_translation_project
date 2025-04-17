@@ -1,13 +1,4 @@
----
-title: "patients table"
-linktitle: "patients"
-date: 2020-08-10
-weight: 1
-description: >
-  Patients' gender, age, and date of death if information exists.
----
 
-Information that is consistent for the lifetime of a patient is stored in this table.
 
 患者一生中保持一致的信息存储在此表中。
 
@@ -26,19 +17,13 @@ Information that is consistent for the lifetime of a patient is stored in this t
 
 ### `subject_id`
 
-`subject_id` is a unique identifier which specifies an individual patient. Any rows associated with a single `subject_id` pertain to the same individual. As `subject_id` is the primary key for the table, it is unique for each row. 
-
 `subject_id` 是一个唯一标识符，用于指定单个患者。与单个 `subject_id` 关联的任何行都属于同一个个体。由于 `subject_id` 是表的主键，因此它对每一行都是唯一的。
 
 ### `gender`
 
-`gender` is the genotypical sex of the patient.
-
 `gender` 是患者的基因型性别。
 
 ### `anchor_age`, `anchor_year`, `anchor_year_group`
-
-These columns provide information regarding the actual patient year for the patient admission, and the patient's age at that time.
 
 这些列提供了有关患者入院时的实际年份以及患者当时年龄的信息。
 
@@ -59,17 +44,11 @@ These columns provide information regarding the actual patient year for the pati
 
 ### `dod`
 
-The de-identified date of death for the patient. Date of death is extracted from two sources: the hospital information system and the [Massachusetts State Registry of Vital Records and Statistics](https://www.mass.gov/orgs/registry-of-vital-records-and-statistics).
+患者的去标识化死亡日期。死亡日期从两个来源提取：医院信息系统和[马萨诸塞州生命记录和统计登记处Massachusetts State Registry of Vital Records and Statistics](https://www.mass.gov/orgs/registry-of-vital-records-and-statistics)。
 
-患者的去标识化死亡日期。死亡日期从两个来源提取：医院信息系统和[马萨诸塞州生命记录和统计登记处](https://www.mass.gov/orgs/registry-of-vital-records-and-statistics)。
-
-Individual patient records from MIMIC were matched to the vital records using a custom algorithm based on identifiers including name, social security number, and date of birth.
 MIMIC 中的个体患者记录通过基于标识符（包括姓名、社会安全号码和出生日期）的自定义算法与生命记录进行匹配。
 
-As a result of the linkage, out of hospital mortality is available for MIMIC-IV patients up to **one year post-hospital discharge**. All patient deaths occurring more than one year after hospital discharge are censored.
 
 由于这种链接，MIMIC-IV 患者的院外死亡率数据可提供至**出院后一年**。所有发生在出院后一年以上的患者死亡都被截断。
-
-Survival studies should incorporate this into their design.
 
 生存研究应将其纳入设计。
