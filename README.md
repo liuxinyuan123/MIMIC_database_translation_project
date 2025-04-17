@@ -96,6 +96,7 @@ https://about.citiprogram.org/
 
 ## 赞助
 
+### 支付宝
 ![支付宝](支付宝.png)
 
 ### 银行账户
