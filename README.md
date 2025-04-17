@@ -11,7 +11,7 @@
 MIMIC-IV数据库是一家医院数据库，由MIT-LCP（MIT Center for Clinical 
 Trials）开发，目前很多科研项目都用到了mimic数据库，但由于英文原版的说明文档阅读起来极不友好，因此，我们决定将mimic数据库的英文版说明文档进行汉化。
 
-我们提供了3种说明文档，分别对应2种语言。并提供在mimic-iv数据库里面物化视图derived_concept各个表中添加`hadm_id`字段，方便后续的查询。
+我们提供了3种说明文档，分别对应2种语言。
 
 ## 参与人员
 * 刘鑫源，青岛大学医学部，山东省青岛市，医学硕士，已毕业。
@@ -73,7 +73,7 @@ https://physionet.org/content/mimiciv/view-required-training/3.1/#1
 伦理、数据使用的审批网站：
 https://about.citiprogram.org/
 
-如需要安装数据库的协作，可以通过本文件下面的联系方式与本团队获得联系。
+如需要安装数据库的协助，可以通过本文件下面的联系方式与本团队获得联系。
 
 ### 软件架构及软件准备
 使用postgresql 17数据库管理。
