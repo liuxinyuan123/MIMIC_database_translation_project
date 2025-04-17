@@ -1,56 +1,33 @@
----
-title: "microbiologyevents"
-linktitle: "microbiologyevents"
-weight: 1
-date: 2020-08-10
-description: >
-  Microbiology cultures.
----
+
 
 ## *microbiologyevents*
 
-Microbiology tests are a common procedure to check for infectious growth and to assess which antibiotic treatments are most effective.  
-
-微生物学测试是一种常见的程序，用于检查感染生长情况，并评估哪种抗生素治疗效果最佳。
-
-The table is best explained with a demonstrative example. If a blood culture is requested for a patient, then a blood sample will be taken and sent to the microbiology lab.  
+微生物学检查是一种常见的检查，用于检查感染生长情况，并评估哪种抗生素治疗效果最佳。
 
 该表的最佳解释是通过一个示范性例子。如果为患者请求了血液培养，那么将采集血液样本并送往微生物学实验室。
 
-The time at which this blood sample is taken is the `charttime`.  
-
 采集血液样本的时间是 `charttime`。
 
-The `spec_type_desc` will indicate that this is a blood sample.  
 `spec_type_desc` 将指示这是一个血液样本。
-
-Bacteria will be cultured on the blood sample, and the remaining columns depend on the outcome of this growth:  
 
 细菌将在血液样本上培养，其余列取决于这种生长的结果：
 
-* If no growth is found, the remaining columns will be NULL  
-  
   如果没有发现生长，其余列将为 NULL。
-* If bacteria is found, then each organism of bacteria will be present in `org_name`, resulting in multiple rows for the single specimen (i.e. multiple rows for the given `spec_type_desc`).  
   
   如果发现细菌，则每个细菌的菌株将出现在 `org_name` 中，导致单个标本产生多行（即给定 `spec_type_desc` 的多行）。
-* If antibiotics are tested on a given bacterial organism, then each antibiotic tested will be present in the `ab_name` column (i.e. multiple rows for the given `org_name` associated with the given `spec_type_desc`). Antibiotic parameters and sensitivities are present in the remaining columns (`dilution_text`, `dilution_comparison`, `dilution_value`, `interpretation`).  
   
   如果对给定的细菌菌株测试抗生素，则每个测试的抗生素将出现在 `ab_name` 列中（即给定 `org_name` 和给定 `spec_type_desc` 的多行）。抗生素参数和敏感性在剩余列中显示（`dilution_text`、`dilution_comparison`、`dilution_value`、`interpretation`）。
 
 ## Important considerations
 
-Typically, negative values are indicated by a NULL value. However, `itemid` 90856 has a value of "NEGATIVE", and should be included in queries which seek to segregate microbiology data based on positive/negative findings.  
 通常，负值由 NULL 值表示。然而，`itemid` 90856 的值为 "NEGATIVE"，应在基于阳性/阴性结果分离微生物学数据的查询中包含它。
 
-`hadm_id` is assigned to observations using the administrative transfer table. However this does not always perfectly capture labs around the hospital stay.  
 `hadm_id` 是通过行政转移表分配给观察值的。然而，这并不总是能完美捕捉到医院停留周围的实验室数据。
 
-To be specific, as of v2.1, it is possible to assign 1,449,547 observations with an `hadm_id` using a join to *admissions* with `subject_id`,  `admittime`, and `dischtime`. However, only 1,396,224 (96%) of these observations have an `hadm_id` actually stored in the *microbiologyevents* table. Users wishing to ensure capture of labs proximal to hospital stays should be aware of this, and use joins with time as necessary.  
 具体来说，截至 v2.1，可以使用 `subject_id`、`admittime` 和 `dischtime` 与 *admissions* 表连接，为 1,449,547 个观察值分配 `hadm_id`。然而，只有 1,396,224（96%）个观察值在 *microbiologyevents* 表中实际存储了 `hadm_id`。希望确保捕捉到接近医院停留的实验室数据的用户应意识到这一点，并根据需要使用时间连接。
 
-<!--
 
+```
 select 
   count(adm.hadm_id) as num_obs_in_hosp
   , count(me.subject_id) as num_obs_with_subject_id
@@ -61,9 +38,10 @@ left join hosp.microbiologyevents me
 on adm.subject_id = me.subject_id
 and me.charttime between adm.admittime and adm.dischtime
 WHERE me.subject_id IS NOT NULL;
+```
 
--->
-## Table columns
+
+## 表列描述
 
 | Name                  | Postgres data type    | Example value                      |
 |-----------------------|-----------------------|------------------------------------|
@@ -94,98 +72,76 @@ WHERE me.subject_id IS NOT NULL;
 | `comments`            | TEXT                  | ___                                |
 
 ### `microevent_id`
-
-A unique integer denoting the row.  
 一个唯一整数表示该行。
 
 ### `subject_id`
 
-{{% include "/static/include/subject_id.md" %}}
 
 ### `hadm_id`
 
-{{% include "/static/include/hadm_id.md" %}}
 
 
 ### `micro_specimen_id`
 
-Uniquely denoted the specimen from which the microbiology measurement was made. Most microbiology measurements are made on patient derived samples (specimens) such as blood, urine, and so on.  
 唯一地表示了进行微生物学测量的标本。大多数微生物学测量都是基于患者衍生样本（标本）进行的，例如血液、尿液等。
 
-Often multiple measurements are made on the same sample. The `micro_specimen_id` will group measurements made on the same sample, e.g. organisms which grew from the same blood sample.  
 通常会在同一标本上进行多次测量。`micro_specimen_id` 将对同一标本上的测量结果进行分组，例如从同一血液样本中生长的菌株。
 
 ### `order_provider_id`
 
-`order_provider_id` provides an anonymous identifier for the provider who ordered the microbiology test.  
 `order_provider_id` 为订购微生物学测试的提供者提供了一个匿名标识符。
 
-{{% include "/static/include/provider_id.md" %}}
 
 ## `chartdate`, `charttime`
 
-`charttime` records the time at which an observation was charted, and is usually the closest proxy to the time the data was actually measured.  
 `charttime` 记录了观察值被记录的时间，通常是实际测量时间的最接近代理。
 
 `chartdate` is the same as `charttime`, except there is no time available.  
 `chartdate` 与 `charttime` 相同，只是没有可用的时间。
 
-`chartdate` was included as time information is not always available for microbiology measurements: in order to be clear about when this occurs, `charttime` is null, and `chartdate` contains the date of the measurement.  
 由于微生物学测量的时间信息并不总是可用的，因此包含了 `chartdate`：为了明确说明何时发生这种情况，`charttime` 为 null，而 `chartdate` 包含测量的日期。
 
-In the cases where both `charttime` and `chartdate` exists, `chartdate` is equal to a truncated version of `charttime` (i.e. `charttime` without the timing information). Not all observations have a `charttime`, but all observations have a `chartdate`.  
 在同时存在 `charttime` 和 `chartdate` 的情况下，`chartdate` 等于 `charttime` 的截断版本（即没有时间信息的 `charttime`）。并非所有观察值都有 `charttime`，但所有观察值都有 `chartdate`。
 
 ## `spec_itemid`, `spec_type_desc`
 
-The specimen which is tested for bacterial growth.  
 测试细菌生长的标本。
 
-The specimen is a sample derived from a patient; e.g. blood, urine, sputum, etc.  
 标本是从患者身上采集的样本；例如，血液、尿液、痰等。
 
 ## `test_seq`
 
-If multiple samples are drawn, the `test_seq` will delineate them. For example, if an aerobic and anerobic culture bottle are used for the same specimen, they will have distinct `test_seq` values (likely 1 and 2).  
 如果采集了多个样本，`test_seq` 将对它们进行区分。例如，如果对同一标本使用了需氧和厌氧培养瓶，它们将具有不同的 `test_seq` 值（可能是 1 和 2）。
 
 ## `storedate`, `storetime`
 
-The date (`storedate`) or date and time (`storetime`) of when the microbiology result was available. While many interim results are made available during the process of assessing a microbiology culture, the times here are the time of the *last* known update.  
 微生物学结果可用的日期（`storedate`）或日期和时间（`storetime`）。虽然在评估微生物学培养的过程中会提供许多中间结果，但此处的时间是最后一次已知更新的时间。
 
 ## `test_itemid`, `test_name`
 
-The test performed on the given specimen.  
 对给定标本进行的测试。
 
 ## `org_itemid`, `org_name`
 
-The organism, if any, which grew when tested. If NULL, no organism grew (i.e. a negative culture).  
 如果有的话，测试时生长的菌株。如果为 NULL，则没有菌株生长（即阴性培养）。
 
 ## `isolate_num`
 
-For testing antibiotics, the isolated colony (integer; starts at 1).  
 用于测试抗生素的分离菌落（整数；从 1 开始）。
 
 ## `ab_itemid`, `ab_name`
 
-If an antibiotic was tested against the given organism for sensitivity, the antibiotic is listed here.  
 如果对抗生素进行了敏感性测试，抗生素将在此列出。
 
 ## `dilution_text`, `dilution_comparison`, `dilution_value`
 
-Dilution values when testing antibiotic sensitivity.  
 测试抗生素敏感性时的稀释值。
 
 ## `interpretation`
 
-`interpretation` of the antibiotic sensitivity, and indicates the results of the test. "S" is sensitive, "R" is resistant, "I" is intermediate, and "P" is pending.  
 抗生素敏感性的 `interpretation`，并指示测试结果。"S" 表示敏感，"R" 表示耐药，"I" 表示中度敏感，"P" 表示待定。
 
 ### `comments`
 
-Deidentified free-text comments associated with the microbiology measurement. Usually these provide information about the sample, whether any notifications were made to care providers regarding the results, considerations for interpretation, or in some cases the comments contain the result of the measurement itself. Comments which have been fully deidentified (i.e. no information content retained) are present as three underscores: `___`. A `NULL` comment indicates no comment was made for the row.
 
 与微生物学测量相关的去标识化自由文本注释。通常这些提供有关样本的信息，是否已向护理提供者通报了结果，解释考虑因素，或者在某些情况下，注释包含测量结果本身。已完全去标识化的注释（即没有保留任何信息内容）以三个下划线表示：`___`。`NULL` 注释表示该行没有注释。
