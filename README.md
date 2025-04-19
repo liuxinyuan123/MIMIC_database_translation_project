@@ -42,7 +42,7 @@ MIMIC全称是Medical Information Mart for Intensive Care, 是一个重症医学
 
 ------
 
-### ICD 诊断代码手册汉化
+## ICD 诊断代码手册汉化
 
 >《疾病和有关健康问题的国际统计分类》（International Statistical Classification of Diseases and Related Health Problems，简称《国际疾病分类》（International Classification of Diseases，ICD），是全世界通用的疾病分类系统和诊断工具，适用于流行病学、卫生服务管理及临床实践。ICD由世界卫生组织负责维护。ICD最初是设计成医疗保健分类系统，提供整套诊断代码来分类疾病，细项分类涵盖各种征象、症状、异常发现、民众投诉、社会环境、以及疾病或伤害的外部原因。此系统的用意是绘制健康条件的知识地图，既能对应通用类别，也能归于特定变化，并为之分配一个指定代码，长度最多为六个字符。准此，主要类别通常会包括一整组相似的疾病。
 
