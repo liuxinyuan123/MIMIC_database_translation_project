@@ -22,7 +22,8 @@ MIMIC全称是Medical Information Mart for Intensive Care, 是一个重症医学
 * 刘鑫源，青岛大学医学部，医学硕士，青岛市，山东省，中国。
 
 * 白洪翔，知右传感技术（上海）有限公司，软件工程师，上海市，中国。
-* 
+
+
 ## 通信方式
 如需协助mimic数据库的安装（windows系统）、数据提取的sql语句，可联系以下邮件。
 
