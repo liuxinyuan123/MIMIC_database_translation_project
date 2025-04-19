@@ -126,6 +126,11 @@ https://about.citiprogram.org/
 
 邮箱：17386506353@189.cn
 
+## 交流互动
+QQ群：934942955
+
+![QQ群.jpg](QQ%E7%BE%A4.jpg)
+
 
 ## 捐赠
 
