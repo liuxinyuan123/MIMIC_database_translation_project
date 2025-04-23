@@ -129,20 +129,22 @@ https://about.citiprogram.org/
 ## 交流互动
 
 ### **[QQ群：934942955](https://qm.qq.com/q/hIJs3oWeis)**
-![QQ群.jpg](QQ%E7%BE%A4.jpg)
+![QQ群.jpg](%E4%BA%92%E5%8A%A8%E4%BA%A4%E6%B5%81/QQ%E7%BE%A4.jpg)
 
 ### [需求收集文档](https://docs.qq.com/aio/DSEJaZHRyUU1zZklI)
 
-![需求文档二维码.png](%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
-
 【腾讯文档】需求文档 https://docs.qq.com/aio/DSEJaZHRyUU1zZklI
+
+![需求文档二维码.png](%E4%BA%92%E5%8A%A8%E4%BA%A4%E6%B5%81/%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
+
+
 
 ## 捐赠
 
 支持项目开发，可通过以下方式进行捐赠。您的支持是我们继续下去的动力！
 
 ### 支付宝
-![支付宝](支付宝.png)
+![支付宝.png](%E4%BA%92%E5%8A%A8%E4%BA%A4%E6%B5%81/%E6%94%AF%E4%BB%98%E5%AE%9D.png)
 
 ### 银行账户
 * 名称：知右传感技术（上海）有限公司
