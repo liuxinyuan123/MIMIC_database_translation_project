@@ -127,10 +127,15 @@ https://about.citiprogram.org/
 邮箱：17386506353@189.cn
 
 ## 交流互动
-QQ群：934942955
 
+### **[QQ群：934942955](https://qm.qq.com/q/hIJs3oWeis)**
 ![QQ群.jpg](QQ%E7%BE%A4.jpg)
 
+### [需求收集文档](https://docs.qq.com/aio/DSEJaZHRyUU1zZklI)
+
+![需求文档二维码.png](%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
+【腾讯文档】需求文档
+https://docs.qq.com/aio/DSEJaZHRyUU1zZklI
 
 ## 捐赠
 
