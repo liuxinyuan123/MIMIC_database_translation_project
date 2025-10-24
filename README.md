@@ -25,7 +25,8 @@ MIMIC全称是Medical Information Mart for Intensive Care, 是一个重症医学
 ------
 
 ## 参与人员
-* 刘鑫源，青岛大学医学部，医学硕士，青岛市，山东省，中国；中国科学院计算技术研究所，北京，中国。
+* 刘鑫源，青岛大学医学部，医学硕士，青岛市，山东省，中国；
+* 中国科学院计算技术研究所，北京，中国。
 
 * 白洪翔，知右传感技术（上海）有限公司，软件工程师，上海市，中国。
 
@@ -63,22 +64,43 @@ ICD诊断代码在mimic数据库中有2个版本，分别为 **ICD-9** 和 **ICD
 
 本项目中提供ICD版本的汉化，提供了2个版本，分别为：
 
-* **[ICD-9 版本中英对照汉化版](./ICD对照手册/ICD诊断代码对照手册/ICD9/index.md)**
-* **[ICD-10 版本中英对照汉化版](ICD对照手册/ICD诊断代码对照手册/ICD10/_index.md)**
+* **[ICD - 9 版本中英对照汉化版](./ICD对照手册/ICD诊断代码对照手册/ICD9/index.md)**
+* **[ICD - 10 版本中英对照汉化版](ICD对照手册/ICD诊断代码对照手册/ICD10/_index.md)**
 
 > 注意：因Gitee里面不支持过大的markdown文件的网页显示，因此本项目提供分段的ICD编码手册。
 
+-----
+
+### **ICD诊断代码**，ICD9和ICD10等效互相转换表格。
+
+- [ICD-9 至 ICD-10 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis ICD9 to ICD10 
+  convert/icd9toicd10cmgem.csv)
+
+- [ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis ICD10 to ICD9
+  convert/icd10toicd9cmgem.csv)
+
+>参考文献：https://www.nber.org/research/data/icd-9-cm-and-icd-10-cm-and-icd-10-pcs-crosswalk-or-general-equivalence-mappings?utm_source
 -----
 
 ## ICD操作代码
 
-* **[ICD-9 操作代码汉化版](./ICD对照手册/ICD操作代码对照手册/ICD9/ICD-9-CM.md)**
+* **[ICD - 9 操作代码汉化版](./ICD对照手册/ICD操作代码对照手册/ICD9/ICD-9-CM.md)**
 * **[ICD - 10 操作代码中英对照汉化版](./ICD对照手册/ICD操作代码对照手册/ICD10/_index.md)**
 
 > 注意：因Gitee里面不支持过大的markdown文件的网页显示，因此本项目提供分段的ICD编码手册。
+---- 
+
+###  **ICD操作代码**，ICD9和ICD10等效互换转换表格。
+- [ICD-9 至 ICD-10 转换表格](./ICD对照手册/ICD操作代码对照手册/Procedures ICD9 to ICD10 
+  convert/icd9toicd10pcsgem.csv)
+
+- [ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD操作代码对照手册/Procedures ICD10 to ICD9 
+  convert/icd10toicd9pcsgem.csv)
+
+>参考文献：https://www.nber.org/research/data/icd-9-cm-and-icd-10-cm-and-icd-10-pcs-crosswalk-or-general-equivalence-mappings?utm_source
+----
 
 
------
 
 ## 化验检查ID对照字典
 ### hosp模块中化验检查ID对照字典
@@ -88,6 +110,7 @@ ICD诊断代码在mimic数据库中有2个版本，分别为 **ICD-9** 和 **ICD
 ### icu模块中化验检查ID对照字典
 * **[化验检查ID对照字典中英对照版](./化验检查ID对照字典/icu模块化验检查ID对照字典汉化版.md)**
 -----
+
 
 ## 项目介绍
 这是一个基于mimic iv数据库的一个数据挖掘相关的科研项目源代码。
