@@ -75,7 +75,7 @@ ICD诊断代码在mimic数据库中有2个版本，分别为 **ICD-9** 和 **ICD
 
 * **[ICD-9 至 ICD-10 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis_ICD9_to_ICD10_convert/icd9toicd10cmgem.csv)**
 
-*  **[ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis_ICD10_to_ICD9_convert/icd10cmtoicd9gem.csv)**
+* **[ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis_ICD10_to_ICD9_convert/icd10cmtoicd9gem.csv)**
 
 >参考文献：https://www.nber.org/research/data/icd-9-cm-and-icd-10-cm-and-icd-10-pcs-crosswalk-or-general-equivalence-mappings?utm_source
 -----
