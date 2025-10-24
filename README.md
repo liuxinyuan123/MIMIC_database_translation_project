@@ -73,11 +73,9 @@ ICD诊断代码在mimic数据库中有2个版本，分别为 **ICD-9** 和 **ICD
 
 ### **ICD诊断代码**，ICD9和ICD10等效互相转换表格。
 
-- [ICD-9 至 ICD-10 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis ICD9 to ICD10 
-  convert/icd9toicd10cmgem.csv)
+- [ICD-9 至 ICD-10 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis_ICD9_to_ICD10_convert/icd9toicd10cmgem.csv)
 
-- [ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis ICD10 to ICD9
-  convert/icd10toicd9cmgem.csv)
+- [ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD诊断代码对照手册/Diagnosis_ICD10_to_ICD9_convert/icd10cmtoicd9gem.csv)
 
 >参考文献：https://www.nber.org/research/data/icd-9-cm-and-icd-10-cm-and-icd-10-pcs-crosswalk-or-general-equivalence-mappings?utm_source
 -----
@@ -91,11 +89,9 @@ ICD诊断代码在mimic数据库中有2个版本，分别为 **ICD-9** 和 **ICD
 ---- 
 
 ###  **ICD操作代码**，ICD9和ICD10等效互换转换表格。
-- [ICD-9 至 ICD-10 转换表格](./ICD对照手册/ICD操作代码对照手册/Procedures ICD9 to ICD10 
-  convert/icd9toicd10pcsgem.csv)
+- [ICD-9 至 ICD-10 转换表格](./ICD对照手册/ICD操作代码对照手册/Procedures_ICD9_to_ICD10_convert/icd9toicd10pcsgem.csv)
 
-- [ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD操作代码对照手册/Procedures ICD10 to ICD9 
-  convert/icd10toicd9pcsgem.csv)
+- [ICD-10 至 ICD-9 转换表格](./ICD对照手册/ICD操作代码对照手册/Procedures_ICD10_to_ICD9_convert/icd10pcstoicd9gem.csv)
 
 >参考文献：https://www.nber.org/research/data/icd-9-cm-and-icd-10-cm-and-icd-10-pcs-crosswalk-or-general-equivalence-mappings?utm_source
 ----
