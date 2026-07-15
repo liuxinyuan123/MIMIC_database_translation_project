@@ -9,6 +9,12 @@
 
 ------
 
+2026年7月15日提出问卷调查：
+1. eICU的汉化：https://github.com/liuxinyuan123/MIMIC_database_translation_project/issues/4#issue-4727298470
+2. MIMIC数据库的一些其他的需求：https://github.com/liuxinyuan123/MIMIC_database_translation_project/issues/5#issue-4889930605
+
+------
+
 ### MIMIC数据库介绍介绍
 
 MIMIC全称是Medical Information Mart for Intensive Care, 是一个重症医学数据库。2003年，在NIH的资助下，来自贝斯以色列女执事医疗中心(Beth Israel Deaconess Medical Center)、麻省理工(MIT)、牛津大学和麻省总医院(MGH)的急诊科医生、重症科医生、计算机科学专家等共同建立的一个数据库。 
